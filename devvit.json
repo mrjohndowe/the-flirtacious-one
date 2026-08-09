@@ -1,0 +1,57 @@
+{
+  "$schema": "https://developers.reddit.com/schema/config-file.v1.json",
+  "name": "the-flirtacious-one",
+  "post": {
+    "dir": "dist/client",
+    "entrypoints": {
+      "default": {
+        "inline": true,
+        "entry": "splash.html"
+      },
+      "game": {
+        "entry": "game.html"
+      }
+    }
+  },
+  "server": {
+    "dir": "dist/server",
+    "entry": "index.cjs"
+  },
+  "menu": {
+  "items": [
+    {
+      "label": "Post Daily Thread Now",
+      "description": "Create or open today's Daily Connections Thread",
+      "location": "subreddit",
+      "forUserType": "moderator",
+      "endpoint": "/internal/menu/post-create"
+    }
+  ]
+},
+  "scheduler": {
+    "tasks": {
+      "daily-thread-mdt": {
+        "endpoint": "/internal/scheduler/daily-thread",
+        "cron": "0 14 * * *"
+      },
+      "daily-thread-mst": {
+        "endpoint": "/internal/scheduler/daily-thread",
+        "cron": "0 15 * * *"
+      }
+    }
+  },
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build"
+  },
+  "permissions": {
+    "redis": true,
+    "reddit": {
+      "enable": true,
+      "scope": "moderator"
+    }
+  },
+  "dev": {
+    "subreddit": "the_flirtacious_o_dev"
+  }
+}
