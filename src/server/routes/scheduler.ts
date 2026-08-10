@@ -10,14 +10,14 @@ function isEightAMInColorado(): boolean {
     hourCycle: 'h23',
   }).format(new Date());
 
-  return hour === '08';
+  return hour === '00';
 }
 
 scheduler.post('/daily-thread', async (c) => {
   try {
     if (!isEightAMInColorado()) {
       console.log(
-        'Scheduler skipped: it is not 8:00 AM in Colorado.'
+        'Scheduler skipped: it is not Midnight in Colorado.'
       );
 
       return c.json(

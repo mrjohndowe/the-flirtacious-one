@@ -32,11 +32,11 @@
     "tasks": {
       "daily-thread-mdt": {
         "endpoint": "/internal/scheduler/daily-thread",
-        "cron": "0 14 * * *"
+        "cron": "0 6 * * *"
       },
       "daily-thread-mst": {
         "endpoint": "/internal/scheduler/daily-thread",
-        "cron": "0 15 * * *"
+        "cron": "0 7 * * *"
       }
     }
   },
