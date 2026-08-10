@@ -18,23 +18,16 @@
     "entry": "index.cjs"
   },
   "menu": {
-    "items": [
-      {
-        "label": "Post Daily Thread Now",
-        "description": "Create or open today's Daily Connections Thread",
-        "location": "subreddit",
-        "forUserType": "moderator",
-        "endpoint": "/internal/menu/post-create"
-      },
-      {
-        "label": "Answer Today's Question",
-        "description": "Create a post answering today's Question of the Day",
-        "location": "subreddit",
-        "forUserType": "user",
-        "endpoint": "/internal/menu/answer-daily-question"
-      }
-    ]
-  },
+  "items": [
+    {
+      "label": "Post Daily Thread Now",
+      "description": "Create or open today's Daily Connections Thread",
+      "location": "subreddit",
+      "forUserType": "moderator",
+      "endpoint": "/internal/menu/post-create"
+    }
+  ]
+},
   "scheduler": {
     "tasks": {
       "daily-thread-mdt": {
@@ -55,16 +48,10 @@
     "redis": true,
     "reddit": {
       "enable": true,
-      "scope": "moderator",
-      "asUser": [
-        "SUBMIT_POST"
-      ]
+      "scope": "moderator"
     }
   },
   "dev": {
     "subreddit": "the_flirtacious_o_dev"
-  },
-  "forms": {
-    "dailyAnswerForm": "/internal/form/daily-answer-submit"
   }
 }

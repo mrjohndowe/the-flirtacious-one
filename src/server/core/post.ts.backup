@@ -1,4 +1,4 @@
-﻿import { context, reddit, redis } from '@devvit/web/server';
+import { context, reddit, redis } from '@devvit/web/server';
 
 const CURRENT_DAILY_KEY = 'daily-thread:current';
 
@@ -23,38 +23,34 @@ const questions = [
     "Wherever you are feels like the best spot in the world.",
     "I might've messed up my first impression, but wait for round two!",
     "You seem like the person who can teach me how to love life even more.",
-    "The universe must be smiling at me right nowâ€¦ because I met you.",
+    "The universe must be smiling at me right now… because I met you.",
     "My day was good, but seeing you made it amazing.",
     "How do you pull off looking this amazing without even trying?",
     "Are you always this charming, or is today special?",
     "You've got a vibe that makes everything else disappear.",
-    "I was about to leave, but now I'm stayingâ€”thanks to you.",
+    "I was about to leave, but now I'm staying—thanks to you.",
     "If confidence had a face, it'd look just like you.",
     "What are your biggest dreams and aspirations in life?",
     "What makes you feel most loved and appreciated?",
     "What do you see as the most important aspect of a lasting relationship?",
-    "Whatâ€™s something youâ€™ve always wanted to do but havenâ€™t had the chance to?",
-    "Whatâ€™s your happiest memory from childhood?",
+    "What’s something you’ve always wanted to do but haven’t had the chance to?",
+    "What’s your happiest memory from childhood?",
     "How do you handle stress or tough times?",
-    "Whatâ€™s your idea of the perfect day?",
+    "What’s your idea of the perfect day?",
     "How do you feel most supported by a partner?",
-    "Whatâ€™s a small thing that makes your day instantly better?",
-    "Whatâ€™s one thing youâ€™re proud of that people might not know about?",
-    "Whatâ€™s your favorite way to spend quality time together?",
-    "Whatâ€™s one lesson life has taught you so far?",
+    "What’s a small thing that makes your day instantly better?",
+    "What’s one thing you’re proud of that people might not know about?",
+    "What’s your favorite way to spend quality time together?",
+    "What’s one lesson life has taught you so far?",
     "How do you envision your future in terms of family and career?",
-    "Whatâ€™s a relationship red flag for you?",
+    "What’s a relationship red flag for you?",
     "What makes you feel truly understood in a relationship?",
-    "Whatâ€™s your favorite way to relax after a long day?",
+    "What’s your favorite way to relax after a long day?",
     "If you could live anywhere in the world, where would it be and why?"
 ];
 
-export function getDailyQuestion(): string {
-  const [year, month, day] = getDateKey().split('-').map(Number);
-
-  const dayNumber = Math.floor(
-    Date.UTC(year, month - 1, day) / (1000 * 60 * 60 * 24)
-  );
+function getDailyQuestion(): string {
+  const dayNumber = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
 
   return questions[dayNumber % questions.length];
 }
@@ -142,13 +138,13 @@ export const createPost = async () => {
 
   const post = await reddit.submitPost({
     subredditName,
-    title: `ðŸ’¬ Daily Connections Thread â€” ${date}`,
+    title: `💬 Daily Connections Thread — ${date}`,
     text: `
 Welcome to today's Daily Connections Thread!
 
 Use this thread to introduce yourself, meet someone new, start a conversation, or just hang out.
 
-## â¤ï¸ Today's Question
+## ❤️ Today's Question
 
 **${question}**
 
@@ -156,13 +152,13 @@ Use this thread to introduce yourself, meet someone new, start a conversation, o
 
 ### Community Reminder
 
-â€¢ Be respectful
-â€¢ No harassment
-â€¢ No spam
-â€¢ Follow all subreddit rules
-â€¢ Report anything that needs moderator attention
+• Be respectful
+• No harassment
+• No spam
+• Follow all subreddit rules
+• Report anything that needs moderator attention
 
-Have fun and enjoy meeting new people! â¤ï¸
+Have fun and enjoy meeting new people! ❤️
 `,
   });
 
