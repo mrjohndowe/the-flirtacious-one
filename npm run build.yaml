@@ -1,0 +1,2 @@
+npm run build
+npx devvit logs Flirty_Connections the-flirtacious-one --since 10m --verbose
